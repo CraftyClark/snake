@@ -1,7 +1,7 @@
 // Constants
 var
-COLS=26,
-ROWS=26,
+COLS,
+ROWS,
 
 LEFT  = 0,
 UP    = 1,
@@ -23,7 +23,7 @@ FRUIT=2;
 var
 highscore = 0,
 speed = 0,
-canvas, //HTML Canvas
+//canvas, //HTML Canvas
 ctx, //Canvas Rendering Context 
 frames, 
 keystate; //Keyboard Input
@@ -111,13 +111,16 @@ function setFood(){
 //Start game
 function main() {
 	//create canvas 
-	canvas = document.createElement("canvas");
-	canvas.width = COLS*20;
-	canvas.height = ROWS*20;
+	canvas = document.getElementById("canvas");
+	canvas.width = window.innerWidth * 1.0;
+	canvas.height = window.innerHeight * 0.8;
+	COLS = parseInt(canvas.width/20);
+	ROWS = parseInt(canvas.height/20);
+
 	ctx = canvas.getContext("2d");
 
 	//add canvas to body
-	document.body.appendChild(canvas);
+	//document.body.appendChild(canvas);
 	
 	//display font
 	ctx.font = "10px Arial";
@@ -157,6 +160,7 @@ function main() {
 function init() {
 
 	score =0; //initialize score
+	console.log("COLS: " + COLS+ "  ROWS: " + ROWS);
 	grid.init(EMPTY, COLS, ROWS);
 	//snake starting position 
 	var snakestart = {x:1, y:Math.floor(ROWS/2)};
