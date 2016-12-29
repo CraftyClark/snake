@@ -134,7 +134,7 @@ function main() {
 	});
 
 	//Does the user want to play? Difficulty? Initialize and loop.
-	var start = confirm("Would you like to play a game?");
+	var start = true;
 	speed = 5;
 	if(start){
 		/*
